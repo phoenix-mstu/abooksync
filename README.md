@@ -21,3 +21,18 @@ where(2) 1542.530000 1543.020000 0.024443
 ```
 
 Of course there are many mistakes. And then we run this program to filter them and get result.
+
+## Simplofied algorithm description
+
+We have text A (original book text) and text B (recognized text). First we get a sequence in text A and then look for this sequence in text B. Usually we find several occurances of the sequence. So we remember all of them, then we get next sequence in text A and so on.
+
+When we done we build directed graph of this text fragments. We link sequence 1 to squence 2 if:
+
+* sequence 1 is left to sequence 2
+* the sequences are not cover each other
+
+so there are so many links that usually we dont have enough memory to keep them (that's why the algorithm is optimized)
+
+After creating links we use Bellman-Ford algirithm to find the longest path in the graph - this path is our result.
+
+
